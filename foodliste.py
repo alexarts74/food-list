@@ -1,4 +1,15 @@
+import json
+import os
+
+root_dir = os.path.dirname(__file__)
+liste_path = os.path.join(root_dir, "liste.json")
+
 liste_food = []
+
+
+with open(liste_path, "r") as f:
+    liste_food = json.load(f)
+
 while True:
 
     print("Quel est ton choix ?" )
@@ -27,3 +38,7 @@ while True:
         break
     elif choice != valid_answer:
         print("Veuillez choisir un chiffre parmi la liste")
+
+with open(liste_path, "w") as f:
+    json.dump(liste_food, f)
+    print(liste_food)
